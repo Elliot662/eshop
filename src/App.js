@@ -8,12 +8,12 @@ const App = () => {
     useEffect(() => {
         const getter = async () => {
             try {
-                let response = await fetch("https://www.mmobomb.com/api1/games")
+                let response = await fetch('https://www.mmobomb.com/api1/games/?limits=10')
                 if (!response.ok) {
                     throw new Error(response.statusText)
                 }
                 let newItem = await response.json()
-                setItem(newItem)
+                setItem(newItem);
             } catch (error) {
                 setError("Error could not fetch the data")
                 console.log(error.message)
@@ -28,9 +28,11 @@ const App = () => {
         return <h1>There has been an error</h1>
     }
     return (
-        <div>
-            <Welcome />
-            <Game />
+        <div className='App'>
+            {item.map((game) => {
+                <div><Game item={game} /></div>
+                })}
+
         </div>
     )
 }
