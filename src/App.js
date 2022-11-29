@@ -29,6 +29,7 @@ const App = () => {
     }
     return (
         <div>
+            <Welcome />
             <Game />
         </div>
     )
