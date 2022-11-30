@@ -1,11 +1,14 @@
 import './App.css';
 import { useEffect, useState } from "react"
-import Game from game.js
-import Welcome from welcome.jss
+import Game from game
+import Welcome from welcome
 
 const App = () => {
     const [error, setError] = useState(null)
     const [item, setItem] = useState("")
+    const [isOpen, setIsOpen] = useState(false);
+
+  
     useEffect(() => {
         const getter = async () => {
             try {
@@ -33,7 +36,14 @@ const App = () => {
             {item.map((game) => {
                 <div><Game item={game} /></div>
                 })}
-
+  
+    <main>
+      <button className={styles.primaryBtn} onClick={() => setIsOpen(true)}>
+        Open Modal
+      </button>
+      {isOpen && <Modal setIsOpen={setIsOpen} />}
+    </main>
+    
         </div>
     )
 }
