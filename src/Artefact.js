@@ -1,4 +1,5 @@
 import "./Artefact.css"
+import Price from "./price"
 
 const Artefact = ({data}) => {
     let price = Number(`${data.objectID}`) * 3
