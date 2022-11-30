@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from "react"
-
+import Game from game.js
+import Welcome from welcome.jss
 
 const App = () => {
     const [error, setError] = useState(null)
