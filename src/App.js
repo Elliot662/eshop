@@ -1,9 +1,9 @@
-import './App.css';
+import './styles.css';
 import { useEffect, useState } from "react"
 import Welcome from './welcome';
 import ID from './Id';
 import Artefact from "./Artefact"
-import Price from './price';
+import {price} from './price';
 
 
 const App = () => {
@@ -19,7 +19,8 @@ const App = () => {
                 throw new Error(response.statusText)
             }
             let newData = await response.json()
-            setData(newData);
+            let updatedData = await price(newData)
+            setData(updatedData);
         } catch (error) {
             setError("Error could not fetch the data")
             console.log(error.message)
