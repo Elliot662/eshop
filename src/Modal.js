@@ -18,7 +18,7 @@ const Modal = (props) => {
                 <div className="modal-body">{props.children}</div>
                 <div className="modal-footer">
                     <button onClick={props.onClose} className="button">Close</button>
-                    <button onClick={props.onSubmit} className="button">Checkout</button>
+                    <button onClick={props.onSubmit} className="button">Pay</button>
                 </div>
             </div>
         </div>
