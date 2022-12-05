@@ -35,6 +35,12 @@ const App = () => {
         console.log("item already in basket")
     }
 
+    const removeHandler = (index) => {
+        let newArr = [...basket]
+        newArr.splice(index, 1)
+        setBasket(newArr)
+      }
+
     useEffect(() => {
         getter()
     }, [])
@@ -64,6 +70,7 @@ const App = () => {
                         <div>
                         <p>{item.objectName}</p>
                         <p>{item.price}</p>
+                        <button onClick={removeHandler}>Delete</button>
                         </div>
                         )})}
             </Modal>
