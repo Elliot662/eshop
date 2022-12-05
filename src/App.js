@@ -29,6 +29,12 @@ const App = () => {
         }
     }
 
+    const handleBasket = (item) => {
+        basket.find(basketItem => basketItem.objectID === item.objectID) == undefined ? 
+        setBasket([...basket, item]) : 
+        console.log("item already in basket")
+    }
+
     useEffect(() => {
         getter()
     }, [])
@@ -50,9 +56,16 @@ const App = () => {
                 onChange={(event) => setUserInput(event.target.value)}
             />
             <button onClick={getter}>Enter</button>
-            <Artefact data={data} />
-            <Modal onSubmit={checkout} title="The Basket" onClose={() => setShow(false)} show={show}>
+            <Artefact data={data} handleBasket={handleBasket}/>
+            <Modal title="The Basket" onClose={() => setShow(false)} show={show}>
                 <p>These are the items you have put in your basket</p>
+                {basket.map((item) => {
+                    return(
+                        <div>
+                        <p>{item.objectName}</p>
+                        <p>{item.price}</p>
+                        </div>
+                        )})}
             </Modal>
         </div>
     )
