@@ -4,13 +4,15 @@ import Welcome from './welcome';
 import ID from './Id';
 import Artefact from "./Artefact"
 import {price} from './price';
+import Modal from './Modal';
 
 
 const App = () => {
     const [data, setData] = useState("")
     const [error, setError] = useState(null)
-    const [isOpen, setIsOpen] = useState(false);
+    const [show, setShow] = useState(false)
     const [userInput, setUserInput] = useState("546303")
+    const [basket, setBasket] = useState([])
 
     const getter = async () => {
         try {
@@ -41,6 +43,7 @@ const App = () => {
         <div>
             <Welcome />
             <ID />
+            <button onClick={() => setShow(true)}>Show basket</button><br/><br/>
             <input
                 type="text"
                 value={userInput}
@@ -48,6 +51,9 @@ const App = () => {
             />
             <button onClick={getter}>Enter</button>
             <Artefact data={data} />
+            <Modal onSubmit={checkout} title="The Basket" onClose={() => setShow(false)} show={show}>
+                <p>These are the items you have put in your basket</p>
+            </Modal>
         </div>
     )
 }
