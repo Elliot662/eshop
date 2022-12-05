@@ -1,11 +1,12 @@
 import "./Artefact.css"
+import React from "react"
 
-const Artefact = ({data}) => {
-    return(
+const Artefact = ({ data }) => {
+    return (
         <div>
             <h2>Artefact Name: {data.objectName}</h2>
             <p>Price: {data.price}</p>
-            <img src={data.primaryImage}/>
+            <img src={data.primaryImage} />
         </div>
     )
 }
